@@ -8,7 +8,7 @@ if sudo docker ps -a | grep -i mynpm; then
    sudo docker cp $WORKSPACE/*  mynpm:/opt/ocetest/
    sudo docker exec -i mynpm /bin/bash /opt/test.sh
 else
-  
+   sudo docker cp mynpm:/opt/Dockerfile /opt
    sudo docker build -t bj/nodejs:7.10.0  /opt/
    sudo docker run -d --name mynpm bj/nodejs:7.10.0
    sudo docker cp $WORKSPACE/*  mynpm:/opt/ocetest/
