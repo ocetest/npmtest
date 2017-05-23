@@ -25,4 +25,4 @@ RUN cd /opt/ && \
 RUN echo -e '\nexport NODE_HOME=/opt/node' >> /etc/profile && \
     echo -e '\nexport PATH=$NODE_HOME/bin:$PATH' >> /etc/profile
 RUN  . /etc/profile  
-RUN mkdir -pv /opt/ocetest/
+#RUN mkdir -pv /opt/ocetest/

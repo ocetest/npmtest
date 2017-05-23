@@ -4,7 +4,7 @@ set -e
 
 WORKSPACE=/var/lib/go-agent/pipelines/npm
 if sudo docker ps -a | grep -i mynpm; then
-   sudo docker cp $WORKSPACE/octest  mynpm:/opt/
+   sudo docker cp $WORKSPACE/ocetest  mynpm:/opt/
    sudo docker exec -i mynpm /bin/bash /opt/test.sh
 else
    sudo docker build -t bj/nodejs:7.10.0  $WORKSPACE/node_docker/
