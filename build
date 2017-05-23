@@ -2,8 +2,7 @@
 
 set -e
 
-WORKSPACE=/var/lib/go-agent/pipelines/jerry
-REGISTRY_URL=ip:5000
+WORKSPACE=/var/lib/go-agent/pipelines/npm
 if sudo docker ps -a | grep -i mynpm; then
    sudo docker cp $WORKSPACE/*  mynpm:/opt/ocetest/
    sudo docker exec -i mynpm /bin/bash /opt/test.sh
