@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+WORKSPACE=/var/lib/go-agent/pipelines/jerry
+REGISTRY_URL=ip:5000
+if sudo docker ps -a | grep -i mynpm; then
+   sudo docker cp $WORKSPACE/*  mynpm:/opt/ocetest/
+   sudo docker exec -i mynpm /bin/bash /opt/test.sh
+else
+  
+   sudo docker build -t bj/nodejs:7.10.0  /opt/
+   sudo docker run -d --name mynpm bj/nodejs:7.10.0
+   sudo docker cp $WORKSPACE/*  mynpm:/opt/ocetest/
+   sudo docker exec -i mynpm /bin/bash /opt/test.sh
+
+fi
+
+
+if sudo docker images |grep none ; then
+   sudo docker images |grep none |awk '{print $3}' | sudo xargs docker rmi -f
+fi
+
+
+
+
+
+exec "$@"
